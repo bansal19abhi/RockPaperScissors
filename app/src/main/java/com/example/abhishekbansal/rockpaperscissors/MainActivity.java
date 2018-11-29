@@ -2,6 +2,7 @@ package com.example.abhishekbansal.rockpaperscissors;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,7 +11,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // this is our first project!
+        // this is our first 25555555 project!
+        Log.d("NAME","JOAO");
+        int i =5;
+        int v0=0;
+        
 
         // added a comment from abhi's computer
 

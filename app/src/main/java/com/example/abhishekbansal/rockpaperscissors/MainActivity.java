@@ -13,5 +13,7 @@ public class MainActivity extends AppCompatActivity {
         // this is our first project!
 
         // added a comment from abhi's computer
+
+        // added from tejas' computer
     }
 }

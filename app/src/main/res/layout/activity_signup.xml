@@ -7,27 +7,37 @@
     tools:context=".Signup">
 
     <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="386dp"
+        android:text="Enter Verification Code" />
+
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="-8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="81dp"
         android:text="Kindly Signup to start Game"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/contactTextBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="259dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="175dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/textView5"
@@ -35,8 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="173dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="131dp"
         android:text="Enter your number" />
 
     <Button
@@ -45,8 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="106dp"
-        android:onClick="signuppressed"
+        android:layout_marginBottom="194dp"
+
         android:text="Sign up and Start Game!" />
 
     <Button
@@ -56,4 +66,15 @@
         android:layout_alignParentTop="true"
         android:onClick="backpressed"
         android:text="Back" />
+
+    <EditText
+        android:id="@+id/verificationTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="447dp"
+        android:ems="10"
+        android:inputType="phone" />
 </RelativeLayout>

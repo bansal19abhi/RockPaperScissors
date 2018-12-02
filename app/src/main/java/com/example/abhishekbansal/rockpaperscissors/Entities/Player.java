@@ -4,20 +4,24 @@ public class Player {
     private String phoneNumber;
     private double lat;
     private double lng;
+    private boolean isLoggedIn;
 
     /*Constructor*/
-    public Player(String phoneNumber, double lat, double lng) {
+    public Player(String phoneNumber, double lat, double lng, boolean isLoggedIn) {
         this.phoneNumber = phoneNumber;
         this.lat = lat;
         this.lng = lng;
+        this.isLoggedIn = isLoggedIn;
     }
-    /*2º Constructor*/
+    /*
     public Player(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         this.lat = lat;
         this.lng = lng;
-    }
+        this.isLoggedIn = isLoggedIn;
 
+    }
+    */
     /*Getters and setters*/
     public String getPhoneNumber() {
         return phoneNumber;
@@ -41,5 +45,18 @@ public class Player {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
+    }
+
+    @Override
+    public String toString() {
+        return " --phoneNumber: " + this.phoneNumber + " --lat: " + this.lat + " --lng: " + this.lng + " --isLoggedIn: " + this.isLoggedIn;
     }
 }

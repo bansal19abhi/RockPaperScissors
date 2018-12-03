@@ -29,7 +29,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/contactTextBox"
+        android:id="@+id/edPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -37,6 +37,7 @@
         android:layout_marginStart="71dp"
         android:layout_marginTop="175dp"
         android:ems="10"
+        android:hint="+0123456789"
         android:inputType="phone" />
 
     <TextView

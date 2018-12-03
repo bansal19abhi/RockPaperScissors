@@ -7,24 +7,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class Signup extends AppCompatActivity {
 
+    private final String TAG = "ABHISHEK";
 
-    private FirebaseAuth mAuth;
-    private EditText mPhoneText;
-    private EditText mCodeText;
-    private Button mSendButton;
+    private static final int RC_SIGN_IN = 123;
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks;
+
 
 
     @Override
@@ -32,48 +34,59 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        mPhoneText = (EditText) findViewById(R.id.contactTextBox);
-        mCodeText = (EditText) findViewById(R.id.verificationTextBox);
-        mSendButton = (Button) findViewById(R.id.button2);
+        if (auth.getCurrentUser() != null) {
 
+            Log.d(TAG, "Already signed in!");
+            Toast.makeText(this,"User already logged in!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), auth.getCurrentUser().getPhoneNumber(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), auth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
 
+            }
+            else {
+            Log.d(TAG, "Not signed in!");
 
-        mSendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            mPhoneText.setEnabled(false);
-            mSendButton.setEnabled(false);
-
-
-            String phoneNumber = mPhoneText.getText().toString();
-
-
-                PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,
-
-                        60,
-                        TimeUnit.SECONDS,
-                        Signup.this,
-                        mCallBacks
-                        );
+            startActivityForResult(
+                    AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .setAvailableProviders(Arrays.asList(
+                                    new AuthUI.IdpConfig.EmailBuilder().build(),
+                                    new AuthUI.IdpConfig.PhoneBuilder().build()))
+                            .build(),
+                    RC_SIGN_IN);
 
 
             }
-        });
+        }
 
-        mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            @Override
-            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == RC_SIGN_IN) {
+
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+
+            if (resultCode == RESULT_OK) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                Intent i = new Intent(this, GameScreen.class);
+                startActivity(i);
             }
 
-            @Override
-            public void onVerificationFailed(FirebaseException e) {
+            else {
 
+                if (response == null) {
+                    Log.d(TAG, "User cancelled the signin process");
+
+                }
+                else {
+                    Log.d(TAG,"an error occurred during login");
+                    Log.d(TAG, response.getError().getMessage());
+                }
             }
-        };
+        }
     }
 
 
@@ -85,7 +98,11 @@ public class Signup extends AppCompatActivity {
 
 
 
-    public void backpressed(View view) {
+
+
+
+
+                public void backpressed(View view) {
         Log.d("Tejas", "Going back to Login Page");
 
         Intent i = new Intent(this, LoginScreen.class);

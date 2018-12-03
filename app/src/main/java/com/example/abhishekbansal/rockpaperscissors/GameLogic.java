@@ -20,136 +20,136 @@ public class GameLogic extends AppCompatActivity {
 
 // similar
 
-    if(player1 =="Paper"&&player2 =="Paper")
+    if(player1 == "Paper" && player2 == "Paper")
 
     {
         System.out.println("It's a Tie");
     }
-    else if(player1 =="Rock"&&player2 =="Rock")
+    else if(player1 == "Rock" && player2 == "Rock")
 
     {
         System.out.println("It's a Tie");
     }
-    else if(player1 =="Scissors"&&player2 =="Scissors")
+    else if(player1 == "Scissors" && player2 == "Scissors")
 
     {
         System.out.println("It's a Tie");
     }
-    else if(player1 =="Lizard"&&player2 =="Lizard")
+    else if(player1 == "Lizard" && player2 == "Lizard")
 
     {
         System.out.println("It's a Tie");
     }
-    else if(player1 =="Spock"&&player2 =="Spock")
+    else if(player1 == "Spock" && player2 == "Spock")
 
     {
         System.out.println("It's a Tie");
     }
 // Rock
-    else if(player1 =="Rock"&&player2 =="Paper")
+    else if(player1 == "Rock" && player2 == "Paper")
 
     {
         System.out.println("Player 2 Wins");
     }
-    else if(player1 =="Rock"&&player2 =="Lizard")
+    else if(player1 == "Rock" && player2 == "Lizard")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Rock"&&player2 =="Spock")
+    else if(player1 == "Rock" && player2 == "Spock")
 
     {
         System.out.println("Player 2 Wins");
     }
-    else if(player1 =="Rock"&&player2 =="Scissors")
+    else if(player1 == "Rock" && player2 == "Scissors")
 
     {
         System.out.println("Player 1 Wins");
     }
 // Paper
 
-    else if(player1 =="Paper"&&player2 =="Rock")
+    else if(player1 == "Paper" && player2 == "Rock")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Paper"&&player2 =="Lizard")
+    else if(player1 == "Paper" && player2 == "Lizard")
 
     {
         System.out.println("Player 2 Wins");
     }
-    else if(player1 =="Paper"&&player2 =="Spock")
+    else if(player1 == "Paper" && player2 == "Spock")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Paper"&&player2 =="Scissors")
+    else if(player1 == "Paper" && player2 == "Scissors")
 
     {
         System.out.println("Player 2 Wins");
     }
 // Scissors
 
-    else if(player1 =="Scissors"&&player2 =="Paper")
+    else if(player1 == "Scissors" && player2 == "Paper")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Scissors"&&player2 =="Rock")
+    else if(player1 == "Scissors" && player2 == "Rock")
 
     {
         System.out.println("Player 2 Wins");
     }
-    else if(player1 =="Scissors"&&player2 =="Lizard")
+    else if(player1 == "Scissors" && player2 == "Lizard")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Scissors"&&player2 =="Spock")
+    else if(player1 == "Scissors" && player2 == "Spock")
 
     {
         System.out.println("Player 2 Wins");
     }
 // Spock
 
-    else if(player1 =="Spock"&&player2 =="Scissors")
+    else if(player1 == "Spock" && player2 == "Scissors")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Spock"&&player2 =="Paper")
+    else if(player1 == "Spock" && player2 == "Paper")
 
     {
         System.out.println("Player 2 Wins");
     }
-    else if(player1 =="Spock"&&player2 =="Rock")
+    else if(player1 == "Spock" && player2 == "Rock")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Spock"&&player2 =="Lizard")
+    else if(player1 == "Spock" && player2 == "Lizard")
 
     {
         System.out.println("Player 2 Wins");
     }
 // Lizard
 
-    else if(player1 =="Lizard"&&player2 =="Spock")
+    else if(player1 == "Lizard" && player2 == "Spock")
 
     {
         System.out.println("Player 2 Wins");
     }
-    else if(player1 =="Lizard"&&player2 =="Scissors")
+    else if(player1 == "Lizard" && player2 == "Scissors")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Lizard"&&player2 =="Paper")
+    else if(player1 == "Lizard" && player2 == "Paper")
 
     {
         System.out.println("Player 1 Wins");
     }
-    else if(player1 =="Lizard"&&player2 =="Rock")
+    else if(player1 == "Lizard" && player2 == "Rock")
 
     {
         System.out.println("Player 2 Wins");

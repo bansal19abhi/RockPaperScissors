@@ -16,8 +16,9 @@ public class GameLogic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_logic);
     }
+}
 
-
+/*
 // similar
 
     if(player1 == "Paper" && player2 == "Paper")
@@ -154,7 +155,7 @@ public class GameLogic extends AppCompatActivity {
     {
         System.out.println("Player 2 Wins");
     }
-}
+}*/
 
 //
 //    else if (player1 == 'Rock' and player2 == 'Rock'):

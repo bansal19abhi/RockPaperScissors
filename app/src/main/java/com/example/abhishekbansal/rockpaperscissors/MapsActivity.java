@@ -114,7 +114,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (id == R.id.action_players_list) {
             Log.d(TAG, "*****userLatitude: " + " => " + userLatitude);
             Log.d(TAG, "*****userLongitude: " + " => " + userLongitude);
-            Toast.makeText(context, "Going to Game room.", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, NearbyPlayersActivity.class);
             i.putExtra("userLatitude", userLatitude);
             i.putExtra("userLongitude", userLongitude);

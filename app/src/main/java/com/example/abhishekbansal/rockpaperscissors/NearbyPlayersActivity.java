@@ -51,7 +51,7 @@ public class NearbyPlayersActivity extends AppCompatActivity implements PlayersN
     double userLatitude;
     double userLongitude;
     PlayersNearbyAdapter selectedPlayerAdapter;
-    final static String TAG = "TestLog2";
+    final static String TAG = "JoaoLog";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final double EARTH_RADIUS = 6371;
     String docNumber = "";
@@ -88,7 +88,7 @@ public class NearbyPlayersActivity extends AppCompatActivity implements PlayersN
                                 if (!document.getId().equals(user.getPhoneNumber())) {
                                     GeoPoint geo = (GeoPoint) document.getData().get("location");
                                     double distance = getDistance(userLatitude, userLongitude, geo.getLatitude(), geo.getLongitude());
-                                    Toast.makeText(context, "This Player is " + String.format("%.0f", (distance)) + " km from you.", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "This Player is " + String.format("%.0f", (distance)) + " km from you.", Toast.LENGTH_SHORT).show();
                                     if (distance <= 500.0){
                                         Player p1 = new Player(document.getId(), geo.getLatitude(), geo.getLongitude(), true);
                                         playersNearBy.add(p1);
@@ -137,10 +137,19 @@ public class NearbyPlayersActivity extends AppCompatActivity implements PlayersN
                                 if (document.getData().get("player1Number").equals(user.getPhoneNumber()) && document.getData().get("player2Number").equals(playersNearBy.get(pos).getPhoneNumber())){
                                     //user is player 1
                                     docNumber = document.getId();
+                                    Log.d(TAG, "###" + document.getId());
+                                    Log.d(TAG, "Error doc?: " + docNumber);
+                                    Intent i = new Intent(context, GameLogic.class);
+                                    i.putExtra("docNumber", docNumber);
+                                    startActivity(i);
                                 }else if (document.getData().get("player1Number").equals(playersNearBy.get(pos).getPhoneNumber()) && document.getData().get("player2Number").equals(user.getPhoneNumber())){
                                     //user is player 2
                                     docNumber = document.getId();
                                     Log.d(TAG, "***" + document.getId());
+                                    Log.d(TAG, "Error doc?: " + docNumber);
+                                    Intent i = new Intent(context, GameLogic.class);
+                                    i.putExtra("docNumber", docNumber);
+                                    startActivity(i);
                                 }
                             }
                             if (docNumber.equals("")){
@@ -152,6 +161,10 @@ public class NearbyPlayersActivity extends AppCompatActivity implements PlayersN
                                             public void onSuccess(DocumentReference documentReference) {
                                                 Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                                                 docNumber = documentReference.getId();
+                                                Log.d(TAG, "Error doc?: " + docNumber);
+                                                Intent i = new Intent(context, GameLogic.class);
+                                                i.putExtra("docNumber", docNumber);
+                                                startActivity(i);
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -161,15 +174,14 @@ public class NearbyPlayersActivity extends AppCompatActivity implements PlayersN
                                             }
                                         });
                             }
+
+
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
                     }
                 });
 
-        Intent i = new Intent(this, GameLogic.class);
-        i.putExtra("docNumber", docNumber);
-        startActivity(i);
     }
 
     public void setupPermissions() {

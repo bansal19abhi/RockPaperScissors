@@ -90,6 +90,21 @@ public class Signup extends AppCompatActivity {
     }
 
 
+    public void login(View v)
+    {
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(Arrays.asList(
+                                new AuthUI.IdpConfig.EmailBuilder().build(),
+                                new AuthUI.IdpConfig.PhoneBuilder().build()))
+                        .build(),
+                RC_SIGN_IN);
+    }
+
+
+
+
 
 
 

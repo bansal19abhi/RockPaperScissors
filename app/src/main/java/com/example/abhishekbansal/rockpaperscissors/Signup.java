@@ -42,7 +42,9 @@ public class Signup extends AppCompatActivity {
             Toast.makeText(this,"User already logged in!", Toast.LENGTH_SHORT).show();
             Toast.makeText(getApplicationContext(), auth.getCurrentUser().getPhoneNumber(), Toast.LENGTH_SHORT).show();
             Toast.makeText(getApplicationContext(), auth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
-
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            Intent i = new Intent(this, MapsActivity.class);
+            startActivity(i);
             }
             else {
             Log.d(TAG, "Not signed in!");
@@ -55,8 +57,6 @@ public class Signup extends AppCompatActivity {
                                     new AuthUI.IdpConfig.PhoneBuilder().build()))
                             .build(),
                     RC_SIGN_IN);
-
-
             }
         }
 
@@ -71,7 +71,7 @@ public class Signup extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Intent i = new Intent(this, GameScreen.class);
+                Intent i = new Intent(this, MapsActivity.class);
                 startActivity(i);
             }
 
@@ -90,19 +90,19 @@ public class Signup extends AppCompatActivity {
     }
 
 
+    public void login(View v)
+    {
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(Arrays.asList(
+                                new AuthUI.IdpConfig.EmailBuilder().build(),
+                                new AuthUI.IdpConfig.PhoneBuilder().build()))
+                        .build(),
+                RC_SIGN_IN);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-                public void backpressed(View view) {
+    public void backpressed(View view) {
         Log.d("Tejas", "Going back to Login Page");
 
         Intent i = new Intent(this, LoginScreen.class);

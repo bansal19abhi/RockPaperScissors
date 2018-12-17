@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +21,7 @@ public class PlayersNearbyAdapter extends RecyclerView.Adapter<PlayersNearbyAdap
     Context context;
     double userLatitude;
     double userLongitude;
-    private static final double EARTH_RADIUS = 500;
+    private static final double EARTH_RADIUS = 6371;
     final static String TAG = "TestLog";
 
     public PlayersNearbyAdapter(Context context, ArrayList<Player> players, double userLatitude, double userLongitude) {
@@ -31,7 +30,6 @@ public class PlayersNearbyAdapter extends RecyclerView.Adapter<PlayersNearbyAdap
         this.context = context;
         this.userLatitude = userLatitude;
         this.userLongitude = userLongitude;
-        //Log.d(TAG, "playersNearBy.size():  " + players.size() + "\n");
     }
 
     // inflates the row layout from xml when needed
@@ -44,8 +42,8 @@ public class PlayersNearbyAdapter extends RecyclerView.Adapter<PlayersNearbyAdap
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        //String animal = mData.get(position);
-        holder.txtPlayer.setText(players.get(position).getPhoneNumber());
+        double distance = getDistance(userLatitude,userLongitude,players.get(position).getLat(),players.get(position).getLng());
+        holder.txtPlayer.setText(players.get(position).getPhoneNumber() +" - "+ String.format("%.1f", distance) + "km from you.");
     }
 
     // total number of rows
@@ -74,13 +72,14 @@ public class PlayersNearbyAdapter extends RecyclerView.Adapter<PlayersNearbyAdap
 
         @Override
         public boolean onLongClick(View v) {
-            //see the distance
+            /*
             Log.d(TAG,"userLatitude: "+userLatitude);
             Log.d(TAG,"userLongitude: "+userLongitude);
             Log.d(TAG,"lat: "+players.get(getAdapterPosition()).getLat());
             Log.d(TAG,"lng: "+players.get(getAdapterPosition()).getLng());
             double distance = getDistance(userLatitude,userLongitude,players.get(getAdapterPosition()).getLat(),players.get(getAdapterPosition()).getLng());
             Toast.makeText(context, "This Player is " + String.format("%.0f", (distance)) +" km from you.", Toast.LENGTH_SHORT).show();
+            */
             return true;
         }
     }
